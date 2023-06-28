@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""square module"""
+"""Square module."""
 
 
 class Square:
-    pass
     """
 
     a square object
     """
+    pass
