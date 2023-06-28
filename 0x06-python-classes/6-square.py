@@ -1,72 +1,59 @@
 #!/usr/bin/python3
-"""
-square class
-"""
+"""Square module."""
 
 
 class Square:
-
+    """Defines a square"""
     def __init__(self, size=0, position=(0, 0)):
+        """Constructor"""
         self.size = size
         self.position = position
-    """
-    creates a square object
-    """
+        """size(int): length of side of the square"""
+        """position(int tuple): position of the square"""
+
     @property
     def size(self):
+        """Property for the length of a size of a square"""
         return self.__size
-        """
-        gets size
-        """
-    @property
-    def position(self):
-        return self.__position
-        """
-        gets position
-        """
-    @position.setter
-    def position(self, value):
-        if(type(value) is not tuple or len(value) is not 2 or
-           type(value[0]) is not int or
-           type(value[1]) is not int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if(value[0] < 0 or value[1] < 0):
-            raise ValueError("position must be a tuple of 2 positive integers")
-        self.__position = value
 
-        """
-        sets position
-        position has to be a tuple of positive integers
-        Raise:
-            ValueError
-            TypeError
-        """
     @size.setter
     def size(self, value):
-        if(type(value) is not int):
+        """Setter function for private attribute size"""
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif(value < 0):
+        if value < 0:
             raise ValueError("size must be >= 0")
+            """Value: size value to set"""
+            """TypeError: if size is not an integer"""
+            """ValueError: if size < 0 """
+        self.__size = value
+
+    @property
+    def position(self):
+        """Property for square position"""
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        """Setter function for private attribute position"""
+        if isinstance(value, tuple) and len(value) == 2:
+            if isinstance(value[0], int) and isinstance(value[1], int):
+                if value[0] >= 0 and value[1] >= 0:
+                    self.__position = value
         else:
-            self.__size = value
-        """
-        sets size
-        size has to be an integer and positive
-        """
+            raise TypeError("position must be a tuple of 2 positive integers")
+            """TypeError: if value is not tuple of 2 positives integers"""
 
     def area(self):
-        return(self.__size**2)
-        """
-        returns the area of the size of the square
-        """
+        """Area of the square"""
+        return self.__size ** 2
+
     def my_print(self):
-        if(self.size == 0):
+        """Print the square"""
+        if self.__size == 0:
             print()
-            return
-        for x in range(self.position[1]):
-            print()
-        for x in range(self.size):
-            print("{}{}".format(" " * self.position[0], "#" * self.size))
-        """
-        prints a square of hashtags based on position and size
-        """
+        else:
+            for i in range(self.__position[1]):
+                print()
+            for j in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
