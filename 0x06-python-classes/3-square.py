@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""square module"""
+
+
 class Square:
-     """
+    """
     creates a square object
     """
     def __init__(self, size=0):
