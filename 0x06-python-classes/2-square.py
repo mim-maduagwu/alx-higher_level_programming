@@ -7,7 +7,9 @@ class Square:
 
     def __init__(self, size=0):
         """
-        creates sqr obj
+        size: length of side of the square
+        TypeError: if size is not an integer
+        ValueError: if size < 0
         """
 
         if type(size) is not int:
