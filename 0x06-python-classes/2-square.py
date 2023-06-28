@@ -15,10 +15,3 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
-        
-        """
-        initializes instance of a square
-        Args:
-            __size(int): size of square
-            size must be positive and integer type
-        """
